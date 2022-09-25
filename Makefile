@@ -1,11 +1,11 @@
 CC=gcc
-CP=cp
+INSTALL=install
 RM=rm -f
 
 all: studict
 
 install:
-	$(CP) studict /usr/bin/studict
+	$(INSTALL) -m755 studict /usr/bin/studict
 
 uninstall:
 	$(RM) /usr/bin/studict
