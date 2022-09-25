@@ -1,11 +1,18 @@
 CC=gcc
+CP=cp
 RM=rm -f
 
-all: main
+all: studict
+
+install:
+	$(CP) studict /usr/bin/studict
+
+uninstall:
+	$(RM) /usr/bin/studict
 
 clean:
-	$(RM) main
+	$(RM) studict
 
-main: main.c
-	$(CC) -o main main.c
+studict: main.c
+	$(CC) -o studict main.c
 
