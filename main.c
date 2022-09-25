@@ -131,7 +131,7 @@ void teachDict(struct Dict dict, const unsigned blockSize, const unsigned startB
 				else
 					printf("incorrect: %s", dict.ar[ei][1]);
 
-				printf(" ");
+				putchar(' ');
 				while(getchar() != '\n');
 			}
 		}
