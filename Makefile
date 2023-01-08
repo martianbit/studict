@@ -5,10 +5,10 @@ RM=rm -f
 all: studict
 
 install:
-	$(INSTALL) -m755 studict /usr/bin/studict
+	$(INSTALL) -m755 studict ~/.local/bin/studict
 
 uninstall:
-	$(RM) /usr/bin/studict
+	$(RM) ~/.local/bin/studict
 
 clean:
 	$(RM) studict
