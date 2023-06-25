@@ -82,9 +82,8 @@ struct Dict parseDict(const char* dictText)
 void teachDict(struct Dict dict, const unsigned blockSize, const unsigned startBlockIndex)
 {
     bool iqc, ibc;
-    char ic;
-    unsigned bsi, cbs, bc, bi, qi, ei, vi;
-    unsigned* order;
+    char ic, *pc;
+    unsigned bsi, cbs, bc, bi, qi, ei, vi, *order;
 
     bc = (dict.ec + blockSize - 1) / blockSize;
     order = malloc(blockSize * sizeof(unsigned));
@@ -125,10 +124,25 @@ void teachDict(struct Dict dict, const unsigned blockSize, const unsigned startB
 
                 ibc = ibc && iqc;
 
+                if(!iqc)
+                {
+                    pc = dict.ar[ei][0];
+
+                    while(*pc != '\0')
+                    {
+                        if((*pc++ & 0xC0) != 0x80)
+                            putchar(' ');
+                    }
+
+                    printf("  %s\n", dict.ar[ei][1]);
+                }
+
+                putchar('\n');
+
                 if(iqc)
                     printf("correct");
                 else
-                    printf("incorrect: %s", dict.ar[ei][1]);
+                    printf("incorrect");
 
                 putchar(' ');
                 while(getchar() != '\n');
@@ -213,4 +227,3 @@ void clearScr(void)
 {
     printf("\x1B[2J\x1B[1;1H");
 }
-
